@@ -25,6 +25,8 @@
   --card-back-border: #764ba2;
   --example-bg: rgba(236, 240, 241, 0.7);
   --example-text: #34495e;
+  --example-english-bg: rgba(224, 235, 245, 0.7);
+  --example-english-text: #2c3e50;
   --part-of-speech-bg: #3498db;
   --part-of-speech-text: #fff;
   --tag-bg: #e74c3c;
@@ -64,6 +66,8 @@
   --card-back-border: #3498db;
   --example-bg: rgba(61, 90, 128, 0.7); /* Brighter example background for dark mode */
   --example-text: #ffffff; /* Brighter example text for better readability */
+  --example-english-bg: rgba(41, 70, 108, 0.7); /* Slightly darker than Portuguese example */
+  --example-english-text: #ffffff; /* Bright text for readability */
   --part-of-speech-bg: #3498db;
   --part-of-speech-text: #ffffff;
   --tag-bg: #e74c3c;

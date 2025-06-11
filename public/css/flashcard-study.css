@@ -149,12 +149,23 @@
 
 .flashcard-back .example {
     font-style: italic;
-    margin: 15px 0;
+    margin: 15px 0 5px 0;
     padding: 10px;
     background-color: var(--example-bg);
     border-radius: 8px;
     width: 90%;
     color: var(--example-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.flashcard-back .card-example-english {
+    font-style: italic;
+    margin: 5px 0 15px 0;
+    padding: 10px;
+    background-color: var(--example-english-bg);
+    border-radius: 8px;
+    width: 90%;
+    color: var(--example-english-text);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 

@@ -44,6 +44,7 @@ function generateCards() {
                 <h3>${card.portuguese}</h3>
                 <div class="english">${card.english}</div>
                 ${card.example ? `<div class="example">${card.example}</div>` : ''}
+                ${card.exampleEnglish ? `<div class="example-english">${card.exampleEnglish}</div>` : ''}
                 <div class="meta">
                     <span class="part-of-speech">${card.partOfSpeech}</span>
                     <span class="difficulty ${card.difficulty}">${card.difficulty}</span>
@@ -198,13 +199,22 @@ function updateStudyCard() {
     // Update back (English + details)
     document.getElementById('cardBackText').textContent = card.english;
     
-    // Update example if available
+    // Update Portuguese example if available
     const exampleElement = document.getElementById('cardExample');
     if (card.example) {
         exampleElement.textContent = card.example;
         exampleElement.style.display = 'block';
     } else {
         exampleElement.style.display = 'none';
+    }
+    
+    // Update English example if available
+    const exampleEnglishElement = document.getElementById('cardExampleEnglish');
+    if (card.exampleEnglish) {
+        exampleEnglishElement.textContent = card.exampleEnglish;
+        exampleEnglishElement.style.display = 'block';
+    } else {
+        exampleEnglishElement.style.display = 'none';
     }
     
     // Update metadata
