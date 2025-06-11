@@ -159,6 +159,9 @@ function openStudyMode(cardIndex) {
     
     // Show the modal
     document.getElementById('studyModeModal').style.display = 'block';
+    
+    // Dispatch custom event for touch gesture handler
+    document.dispatchEvent(new CustomEvent('studyModeOpened'));
 }
 
 // Update the study card content
@@ -184,7 +187,21 @@ function updateStudyCard() {
     document.getElementById('cardPartOfSpeech').textContent = card.partOfSpeech;
     document.getElementById('cardDifficulty').textContent = card.difficulty;
     document.getElementById('cardDifficulty').className = `difficulty ${card.difficulty}`;
-    document.getElementById('cardTags').textContent = card.tags;
+    
+    // Format tags if they exist
+    const tagsContainer = document.getElementById('cardTags');
+    tagsContainer.innerHTML = '';
+    if (card.tags) {
+        const tagsList = card.tags.split(' ');
+        tagsList.forEach(tag => {
+            if (tag.trim() !== '') {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'tag';
+                tagSpan.textContent = tag;
+                tagsContainer.appendChild(tagSpan);
+            }
+        });
+    }
     
     // Update counter
     document.getElementById('cardCounter').textContent = `Card ${currentCardIndex + 1} of ${filteredCards.length}`;
@@ -225,10 +242,13 @@ function nextCard() {
 // Close the study mode
 function closeStudyMode() {
     document.getElementById('studyModeModal').style.display = 'none';
+    
+    // Dispatch custom event for touch gesture handler
+    document.dispatchEvent(new CustomEvent('studyModeClosed'));
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     updateStats();
     generateCards();
     
@@ -237,6 +257,35 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('prevCard').addEventListener('click', prevCard);
     document.getElementById('nextCard').addEventListener('click', nextCard);
     document.querySelector('.close-button').addEventListener('click', closeStudyMode);
+    
+    // Add click event to the flashcard itself to flip it
+    const flashcardElement = document.getElementById('flashcard');
+    let isTextSelected = false;
+    
+    // Track text selection
+    document.addEventListener('selectionchange', function() {
+        isTextSelected = window.getSelection().toString().length > 0;
+    });
+    
+    // Handle mousedown/touchstart to check for potential text selection
+    flashcardElement.addEventListener('mousedown', function(e) {
+        // Reset the text selection flag on mousedown
+        isTextSelected = false;
+    });
+    
+    flashcardElement.addEventListener('click', function(e) {
+        // Don't flip if text is selected or if clicking on controls
+        if (isTextSelected || 
+            window.getSelection().toString().length > 0 || 
+            e.target.closest('.study-controls') !== null || 
+            e.target.closest('.study-info') !== null || 
+            e.target.id === 'closeModalBtn') {
+            return;
+        }
+        
+        // Flip the card
+        flipCard();
+    });
     
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
