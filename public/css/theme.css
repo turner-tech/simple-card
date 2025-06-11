@@ -62,8 +62,8 @@
   --card-back-bg: #1a1a1a;
   --card-back-text: #f0f0f0;
   --card-back-border: #3498db;
-  --example-bg: rgba(26, 26, 42, 0.7);
-  --example-text: #f0f0f0;
+  --example-bg: rgba(61, 90, 128, 0.7); /* Brighter example background for dark mode */
+  --example-text: #ffffff; /* Brighter example text for better readability */
   --part-of-speech-bg: #3498db;
   --part-of-speech-text: #ffffff;
   --tag-bg: #e74c3c;
@@ -76,6 +76,8 @@
   --stats-bg: #1a1a1a;
   --stats-border: #2c3e50;
   --stats-title: #f0f0f0;
+  --stat-number: #3498db; /* Brighter color for stat numbers */
+  --stat-label: #cccccc; /* Lighter color for stat labels */
 }
 
 /* Apply theme variables to elements */

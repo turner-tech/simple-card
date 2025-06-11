@@ -70,18 +70,42 @@ function generateCards() {
 
 function updateStats() {
     const stats = {
+        // Difficulty stats
         total: improvedFlashcards.length,
         beginner: improvedFlashcards.filter(c => c.difficulty === 'beginner').length,
         intermediate: improvedFlashcards.filter(c => c.difficulty === 'intermediate').length,
         advanced: improvedFlashcards.filter(c => c.difficulty === 'advanced').length,
-        withExamples: improvedFlashcards.filter(c => c.example).length
+        withExamples: improvedFlashcards.filter(c => c.example).length,
+        
+        // Word type stats
+        verbs: improvedFlashcards.filter(c => c.partOfSpeech && c.partOfSpeech.toLowerCase().includes('verb')).length,
+        nouns: improvedFlashcards.filter(c => c.partOfSpeech && c.partOfSpeech.toLowerCase().includes('noun')).length,
+        prepositions: improvedFlashcards.filter(c => c.partOfSpeech && c.partOfSpeech.toLowerCase().includes('preposition')).length,
+        questions: improvedFlashcards.filter(c => {
+            // Check if it's a question in the Portuguese text or tagged as question
+            return (c.portuguese && c.portuguese.includes('?')) || 
+                   (c.tags && c.tags.toLowerCase().includes('question'));
+        }).length,
+        phrases: improvedFlashcards.filter(c => {
+            // Check if it's tagged as phrase or contains multiple words
+            return (c.tags && c.tags.toLowerCase().includes('phrase')) || 
+                   (c.portuguese && c.portuguese.split(' ').length > 2);
+        }).length
     };
 
+    // Update difficulty stats
     document.getElementById('totalCards').textContent = stats.total;
     document.getElementById('beginnerCards').textContent = stats.beginner;
     document.getElementById('intermediateCards').textContent = stats.intermediate;
     document.getElementById('advancedCards').textContent = stats.advanced;
     document.getElementById('withExamples').textContent = stats.withExamples;
+    
+    // Update word type stats
+    document.getElementById('verbCards').textContent = stats.verbs;
+    document.getElementById('nounCards').textContent = stats.nouns;
+    document.getElementById('prepCards').textContent = stats.prepositions;
+    document.getElementById('questionCards').textContent = stats.questions;
+    document.getElementById('phraseCards').textContent = stats.phrases;
 }
 
 function showAllCards() {

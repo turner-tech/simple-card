@@ -130,9 +130,20 @@ body {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.stats h3 {
+.stats h3, .stats h4 {
     margin: 0 0 10px 0;
     color: var(--stats-title);
+}
+
+.stats-section {
+    margin-bottom: 20px;
+}
+
+.stats h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--card-border);
 }
 
 .stats-grid {
@@ -152,13 +163,14 @@ body {
 .stat-number {
     font-size: 24px;
     font-weight: bold;
-    color: var(--button-bg);
+    color: var(--stat-number, var(--button-bg));
+    transition: color 0.3s ease;
 }
 
 .stat-label {
     font-size: 12px;
-    color: var(--text-color);
-    opacity: 0.7;
+    color: var(--stat-label, var(--text-color));
+    transition: color 0.3s ease;
 }
 
 .filter-controls {

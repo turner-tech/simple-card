@@ -7,40 +7,41 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--modal-bg);
     overflow: auto;
+    transition: background-color 0.3s ease;
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--modal-content-bg);
     margin: 5% auto;
     padding: 40px 30px 30px;
     border-radius: 10px;
     width: 80%;
     max-width: 700px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--card-shadow);
     position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--card-border);
 }
 
 .close-button {
     position: absolute;
     top: 10px;
     right: 15px;
-    color: #aaa;
+    color: var(--close-button-text);
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 10;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s ease;
 }
 
 .close-button:hover {
-    color: #333;
+    color: var(--close-button-hover);
 }
 
 .study-controls {
@@ -50,8 +51,8 @@
 }
 
 .study-controls button {
-    background-color: #667eea;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -60,17 +61,21 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: background-color 0.3s ease;
 }
 
 .study-controls button:hover {
-    background-color: #764ba2;
+    background-color: var(--button-hover);
 }
 
+/* Hover style already defined above */
+
 .arrow {
-    border: solid white;
+    border: solid var(--button-text);
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
+    transition: border-color 0.3s ease;
 }
 
 .right {
@@ -116,45 +121,41 @@
 }
 
 .flashcard-front {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--card-front-bg);
+    color: var(--card-front-text);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .flashcard-back {
-    background-color: white;
-    color: #333;
+    background-color: var(--card-back-bg);
+    color: var(--card-back-text);
     transform: rotateY(180deg);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    backface-visibility: hidden;
-    position: absolute;
+    border: 2px solid var(--card-back-border);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    border: 2px solid #764ba2;
 }
 
 .flashcard-back .english {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #2c3e50;
+    color: var(--card-back-text);
+    transition: color 0.3s ease;
 }
 
 .flashcard-back .example {
     font-style: italic;
     margin: 15px 0;
     padding: 10px;
-    background-color: rgba(236, 240, 241, 0.7);
+    background-color: var(--example-bg);
     border-radius: 8px;
     width: 90%;
-    color: #34495e;
+    color: var(--example-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .flashcard-back .meta {
@@ -166,8 +167,9 @@
 }
 
 .flashcard-back .part-of-speech {
-    background-color: #3498db;
-    color: white;
+    background-color: var(--part-of-speech-bg);
+    color: var(--part-of-speech-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
     padding: 5px 10px;
     border-radius: 15px;
     font-size: 0.9rem;
@@ -182,6 +184,7 @@
     font-weight: bold;
     display: inline-block;
     margin: 5px 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .flashcard-back .tags {
@@ -193,13 +196,14 @@
 }
 
 .flashcard-back .tag {
-    background-color: #e74c3c;
-    color: white;
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
     padding: 3px 8px;
     border-radius: 10px;
     font-size: 0.8rem;
     display: inline-block;
     margin: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .card-example {
@@ -207,9 +211,11 @@
     font-style: italic;
     max-width: 80%;
     padding: 10px;
-    background-color: #f9f9f9;
-    border-left: 3px solid #667eea;
+    background-color: var(--example-bg);
+    color: var(--example-text);
+    border-left: 3px solid var(--card-back-border);
     border-radius: 3px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .study-info {
@@ -217,8 +223,10 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    color: #666;
+    color: var(--card-back-text);
+    opacity: 0.8;
     font-size: 14px;
+    transition: color 0.3s ease;
 }
 
 .keyboard-shortcuts {
