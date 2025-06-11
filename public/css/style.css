@@ -149,10 +149,20 @@ body {
 }
 
 .filter-controls {
+    margin: 15px 0;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 15px;
+}
+
+.filter-status {
+    margin: 10px 0 20px;
+    font-size: 14px;
+    color: #555;
+    background-color: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
 }
 
 .filter-button {

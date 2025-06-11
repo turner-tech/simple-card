@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Improved Portuguese Flashcards</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/flashcard-study.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -55,14 +56,54 @@
         <button class="filter-button" onclick="filterCards('month')">Months</button>
         <button class="filter-button" onclick="filterCards('question')">Questions</button>
         <button class="filter-button" onclick="filterCards('phrase')">Phrases</button>
+    </div>
+
+    <div class="filter-controls">
         <button class="filter-button" onclick="filterCards('beginner')">Beginner</button>
         <button class="filter-button" onclick="filterCards('intermediate')">Intermediate</button>
         <button class="filter-button" onclick="filterCards('advanced')">Advanced</button>
     </div>
+    
+    <div class="filter-status">
+        <span id="filter-counter">Showing all cards</span>
+    </div>
 
     <div class="card-grid"></div>
 
-    <script src="js/improvedFlashcards.js"></script>
-    <script src="js/flashcards.js"></script>
+    <!-- Flashcard Study Mode Modal -->
+    <div id="studyModeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="study-controls">
+                <button id="prevCard"><i class="arrow left"></i> Previous</button>
+                <button id="flipCard">Flip Card</button>
+                <button id="nextCard">Next <i class="arrow right"></i></button>
+            </div>
+            <div id="flashcard" class="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <h2 id="cardFrontText"></h2>
+                    </div>
+                    <div class="flashcard-back">
+                        <h3 id="cardBackText"></h3>
+                        <div id="cardExample" class="card-example"></div>
+                        <div class="card-meta">
+                            <span id="cardPartOfSpeech" class="part-of-speech"></span>
+                            <span id="cardDifficulty" class="difficulty"></span>
+                            <span id="cardTags" class="tags"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="study-info">
+                <span id="cardCounter">Card 1 of 10</span>
+                <div class="keyboard-shortcuts">
+                    <span>Space/Enter/↑↓: Flip | ←→: Navigate | Esc: Close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/flashcard-data.js"></script>
+    <script src="js/flashcard-logic.js"></script>
 </body>
 </html>
