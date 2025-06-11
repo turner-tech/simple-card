@@ -1,0 +1,210 @@
+/* Theme styles for Lingua Card */
+
+:root {
+  /* Light theme (default) */
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --card-bg: #fff;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --header-text: #fff;
+  --button-bg: #667eea;
+  --button-hover: #764ba2;
+  --button-text: #fff;
+  --filter-active: #667eea;
+  --filter-inactive: #e0e0e0;
+  --filter-text: #333;
+  --filter-active-text: #fff;
+  --filter-status-bg: #f0f0f0;
+  --filter-status-text: #555;
+  --card-border: #ddd;
+  --card-front-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-front-text: #fff;
+  --card-back-bg: #fff;
+  --card-back-text: #333;
+  --card-back-border: #764ba2;
+  --example-bg: rgba(236, 240, 241, 0.7);
+  --example-text: #34495e;
+  --part-of-speech-bg: #3498db;
+  --part-of-speech-text: #fff;
+  --tag-bg: #e74c3c;
+  --tag-text: #fff;
+  --modal-bg: rgba(0, 0, 0, 0.7);
+  --modal-content-bg: #fefefe;
+  --close-button-bg: rgba(255, 255, 255, 0.8);
+  --close-button-text: #aaa;
+  --close-button-hover: #333;
+  --stats-bg: #fff;
+  --stats-border: #ddd;
+  --stats-title: #333;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --bg-color: #0a0a0a; /* Almost black background */
+  --text-color: #f0f0f0; /* Brighter text for better contrast */
+  --card-bg: #1a1a1a; /* Slightly lighter than background */
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --header-bg: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%); /* Darker gradient */
+  --header-text: #ffffff;
+  --button-bg: #2c3e50;
+  --button-hover: #3498db; /* Brighter hover state for better feedback */
+  --button-text: #ffffff;
+  --filter-active: #3498db;
+  --filter-inactive: #2c3e50;
+  --filter-text: #f0f0f0;
+  --filter-active-text: #ffffff;
+  --filter-status-bg: #1a1a1a;
+  --filter-status-text: #f0f0f0;
+  --card-border: #2c3e50;
+  --card-front-bg: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%);
+  --card-front-text: #ffffff;
+  --card-back-bg: #1a1a1a;
+  --card-back-text: #f0f0f0;
+  --card-back-border: #3498db;
+  --example-bg: rgba(26, 26, 42, 0.7);
+  --example-text: #f0f0f0;
+  --part-of-speech-bg: #3498db;
+  --part-of-speech-text: #ffffff;
+  --tag-bg: #e74c3c;
+  --tag-text: #ffffff;
+  --modal-bg: rgba(0, 0, 0, 0.9); /* Darker modal overlay */
+  --modal-content-bg: #1a1a1a;
+  --close-button-bg: rgba(44, 62, 80, 0.8);
+  --close-button-text: #f0f0f0;
+  --close-button-hover: #ffffff;
+  --stats-bg: #1a1a1a;
+  --stats-border: #2c3e50;
+  --stats-title: #f0f0f0;
+}
+
+/* Apply theme variables to elements */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+  background: var(--header-bg);
+  color: var(--header-text);
+}
+
+.button, .filter-button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+}
+
+.button:hover, .filter-button:hover, .filter-button.active {
+  background-color: var(--button-hover);
+}
+
+.filter-button {
+  background-color: var(--filter-inactive);
+  color: var(--filter-text);
+}
+
+.filter-button.active {
+  background-color: var(--filter-active);
+  color: var(--filter-active-text);
+}
+
+.filter-status {
+  background-color: var(--filter-status-bg);
+  color: var(--filter-status-text);
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+}
+
+.flashcard-front {
+  background: var(--card-front-bg);
+  color: var(--card-front-text);
+}
+
+.flashcard-back {
+  background-color: var(--card-back-bg);
+  color: var(--card-back-text);
+  border: 2px solid var(--card-back-border);
+}
+
+.flashcard-back .example {
+  background-color: var(--example-bg);
+  color: var(--example-text);
+}
+
+.flashcard-back .part-of-speech {
+  background-color: var(--part-of-speech-bg);
+  color: var(--part-of-speech-text);
+}
+
+.flashcard-back .tag {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+}
+
+.modal {
+  background-color: var(--modal-bg);
+}
+
+.modal-content {
+  background-color: var(--modal-content-bg);
+}
+
+.close-button {
+  background-color: var(--close-button-bg);
+  color: var(--close-button-text);
+}
+
+.close-button:hover {
+  color: var(--close-button-hover);
+}
+
+.stats {
+  background-color: var(--stats-bg);
+  border: 1px solid var(--stats-border);
+}
+
+.stats h3 {
+  color: var(--stats-title);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
+  }
+}
