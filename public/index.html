@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Portuguese Flashcards</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>🇧🇷 Improved Portuguese Flashcards</h1>
+        <p>Enhanced vocabulary deck with examples, grammar info, and Anki-ready format</p>
+    </div>
+
+    <div class="controls">
+        <button class="button" id="downloadBtn" onclick="downloadExcel()">📥 Download Excel File</button>
+        <button class="button" onclick="downloadAnkiCSV()">📚 Download Anki CSV</button>
+        <button class="button" onclick="showAllCards()">👁️ Show All Cards</button>
+        <button class="button" onclick="hideCards()">🙈 Hide Cards</button>
+    </div>
+
+    <div class="stats" id="stats">
+        <h3>📊 Deck Statistics</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" id="totalCards">0</div>
+                <div class="stat-label">Total Cards</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="beginnerCards">0</div>
+                <div class="stat-label">Beginner</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="intermediateCards">0</div>
+                <div class="stat-label">Intermediate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="advancedCards">0</div>
+                <div class="stat-label">Advanced</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="withExamples">0</div>
+                <div class="stat-label">With Examples</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-controls">
+        <button class="filter-button active" onclick="filterCards('all')">All</button>
+        <button class="filter-button" onclick="filterCards('verb')">Verbs</button>
+        <button class="filter-button" onclick="filterCards('noun')">Nouns</button>
+        <button class="filter-button" onclick="filterCards('preposition')">Prepositions</button>
+        <button class="filter-button" onclick="filterCards('number')">Numbers</button>
+        <button class="filter-button" onclick="filterCards('month')">Months</button>
+        <button class="filter-button" onclick="filterCards('question')">Questions</button>
+        <button class="filter-button" onclick="filterCards('phrase')">Phrases</button>
+        <button class="filter-button" onclick="filterCards('beginner')">Beginner</button>
+        <button class="filter-button" onclick="filterCards('intermediate')">Intermediate</button>
+        <button class="filter-button" onclick="filterCards('advanced')">Advanced</button>
+    </div>
+
+    <div class="card-grid"></div>
+
+    <script src="js/improvedFlashcards.js"></script>
+    <script src="js/flashcards.js"></script>
+</body>
+</html>
