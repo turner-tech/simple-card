@@ -27,17 +27,19 @@
 
 .close-button {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 0px;
+    right: 5px;
     color: var(--close-button-text);
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
     background: none;
     border: none;
-    padding: 0;
+    padding: 5px 10px;
     line-height: 1;
     transition: color 0.3s ease;
+    border-radius: 50%;
+    z-index: 1001; /* Ensure it's above other elements */
 }
 
 .close-button:hover {
@@ -147,26 +149,32 @@
     transition: color 0.3s ease;
 }
 
-.flashcard-back .example {
+.flashcard-back .example,
+.flashcard-back .card-example-english {
     font-style: italic;
-    margin: 15px 0 5px 0;
-    padding: 10px;
-    background-color: var(--example-bg);
+    margin: 8px 0;
+    padding: 8px 15px;
     border-radius: 8px;
-    width: 90%;
-    color: var(--example-text);
+    width: 90%; /* Match the width of other elements in the card */
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.flashcard-back .example {
+    background-color: var(--example-bg);
+    color: var(--example-text);
+    border-left: 4px solid #4682b4; /* Steel blue border */
+    display: inline-block;
+    max-width: fit-content;
+}
+
 .flashcard-back .card-example-english {
-    font-style: italic;
-    margin: 5px 0 15px 0;
-    padding: 10px;
     background-color: var(--example-english-bg);
-    border-radius: 8px;
-    width: 90%;
     color: var(--example-english-text);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 4px solid #3cb371; /* Medium sea green border */
+    display: inline-block;
+    max-width: fit-content;
 }
 
 .flashcard-back .meta {

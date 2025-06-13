@@ -23,10 +23,10 @@
   --card-back-bg: #fff;
   --card-back-text: #333;
   --card-back-border: #764ba2;
-  --example-bg: rgba(236, 240, 241, 0.7);
-  --example-text: #34495e;
-  --example-english-bg: rgba(224, 235, 245, 0.7);
-  --example-english-text: #2c3e50;
+  --example-bg: rgba(236, 240, 241, 0.9);
+  --example-text: #2c3e50;
+  --example-english-bg: rgba(217, 231, 255, 0.9);
+  --example-english-text: #1a365d;
   --part-of-speech-bg: #3498db;
   --part-of-speech-text: #fff;
   --tag-bg: #e74c3c;
@@ -64,9 +64,9 @@
   --card-back-bg: #1a1a1a;
   --card-back-text: #f0f0f0;
   --card-back-border: #3498db;
-  --example-bg: rgba(61, 90, 128, 0.7); /* Brighter example background for dark mode */
-  --example-text: #ffffff; /* Brighter example text for better readability */
-  --example-english-bg: rgba(41, 70, 108, 0.7); /* Slightly darker than Portuguese example */
+  --example-bg: rgba(70, 130, 180, 0.85); /* Brighter blue background for Portuguese examples */
+  --example-text: #ffffff; /* Bright text for readability */
+  --example-english-bg: rgba(60, 179, 113, 0.85); /* Green background for English examples */
   --example-english-text: #ffffff; /* Bright text for readability */
   --part-of-speech-bg: #3498db;
   --part-of-speech-text: #ffffff;

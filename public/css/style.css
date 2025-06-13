@@ -71,26 +71,27 @@ body {
     margin-bottom: 10px;
 }
 
+.card .example,
+.card .example-english {
+    padding: 10px;
+    border-radius: 6px;
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .card .example {
     background: var(--example-bg);
-    padding: 8px;
-    border-radius: 5px;
-    font-style: italic;
     color: var(--example-text);
-    font-size: 14px;
-    margin-bottom: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 4px solid #4682b4; /* Steel blue border */
 }
 
 .card .example-english {
     background: var(--example-english-bg);
-    padding: 8px;
-    border-radius: 5px;
-    font-style: italic;
     color: var(--example-english-text);
-    font-size: 14px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 4px solid #3cb371; /* Medium sea green border */
 }
 
 .card .meta {
