@@ -167,6 +167,8 @@ function downloadAnkiCSV() {
 // Study Mode Variables
 let currentCardIndex = 0;
 let isCardFlipped = false;
+let isEnglishMode = false; // Default to Portuguese mode
+let showBackSide = false; // Default to showing front side when navigating
 
 // Open Study Mode with a specific card
 function openStudyMode(cardIndex) {
@@ -193,11 +195,16 @@ function openStudyMode(cardIndex) {
 function updateStudyCard() {
     const card = filteredCards[currentCardIndex];
     
-    // Update front (Portuguese)
-    document.getElementById('cardFrontText').textContent = card.portuguese;
-    
-    // Update back (English + details)
-    document.getElementById('cardBackText').textContent = card.english;
+    // Apply the current mode (Portuguese or English)
+    if (isEnglishMode) {
+        // English mode: English on front, Portuguese on back
+        document.getElementById('cardFrontText').textContent = card.english;
+        document.getElementById('cardBackText').textContent = card.portuguese;
+    } else {
+        // Portuguese mode: Portuguese on front, English on back
+        document.getElementById('cardFrontText').textContent = card.portuguese;
+        document.getElementById('cardBackText').textContent = card.english;
+    }
     
     // Update Portuguese example if available
     const exampleElement = document.getElementById('cardExample');
@@ -239,6 +246,10 @@ function updateStudyCard() {
     
     // Update counter
     document.getElementById('cardCounter').textContent = `Card ${currentCardIndex + 1} of ${filteredCards.length}`;
+    
+    // Update toggle switches to match current modes
+    document.getElementById('cardModeToggle').checked = isEnglishMode;
+    document.getElementById('cardSideToggle').checked = showBackSide;
 }
 
 // Flip the flashcard
@@ -257,8 +268,13 @@ function flipCard(e) {
 function prevCard() {
     if (currentCardIndex > 0) {
         currentCardIndex--;
-        isCardFlipped = false;
-        document.getElementById('flashcard').classList.remove('flipped');
+        // Set card flip state based on user preference
+        isCardFlipped = showBackSide;
+        if (showBackSide) {
+            document.getElementById('flashcard').classList.add('flipped');
+        } else {
+            document.getElementById('flashcard').classList.remove('flipped');
+        }
         updateStudyCard();
     }
 }
@@ -267,8 +283,13 @@ function prevCard() {
 function nextCard() {
     if (currentCardIndex < filteredCards.length - 1) {
         currentCardIndex++;
-        isCardFlipped = false;
-        document.getElementById('flashcard').classList.remove('flipped');
+        // Set card flip state based on user preference
+        isCardFlipped = showBackSide;
+        if (showBackSide) {
+            document.getElementById('flashcard').classList.add('flipped');
+        } else {
+            document.getElementById('flashcard').classList.remove('flipped');
+        }
         updateStudyCard();
     }
 }
@@ -291,6 +312,31 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('prevCard').addEventListener('click', prevCard);
     document.getElementById('nextCard').addEventListener('click', nextCard);
     document.querySelector('.close-button').addEventListener('click', closeStudyMode);
+    
+    // Set up card mode toggle listener
+    document.getElementById('cardModeToggle').addEventListener('change', function() {
+        isEnglishMode = this.checked;
+        // Reset card flip state when changing modes
+        isCardFlipped = showBackSide;
+        if (showBackSide) {
+            document.getElementById('flashcard').classList.add('flipped');
+        } else {
+            document.getElementById('flashcard').classList.remove('flipped');
+        }
+        updateStudyCard();
+    });
+    
+    // Set up card side toggle listener
+    document.getElementById('cardSideToggle').addEventListener('change', function() {
+        showBackSide = this.checked;
+        // Update card flip state immediately
+        isCardFlipped = showBackSide;
+        if (showBackSide) {
+            document.getElementById('flashcard').classList.add('flipped');
+        } else {
+            document.getElementById('flashcard').classList.remove('flipped');
+        }
+    });
     
     // Add click event to the flashcard itself to flip it
     const flashcardElement = document.getElementById('flashcard');

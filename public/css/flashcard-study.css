@@ -70,6 +70,103 @@
     background-color: var(--button-hover);
 }
 
+/* Toggle Controls Container */
+.toggle-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+/* Toggle Row */
+.toggle-row {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 30px;
+}
+
+/* Toggle Group */
+.toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mode-label {
+    font-size: 14px;
+    color: var(--card-back-text);
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #4682b4; /* Portuguese mode color (steel blue) */
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #3cb371; /* English mode color (medium sea green) */
+}
+
+/* Orange slider for card side toggle */
+.slider.orange {
+    background-color: #6495ED; /* Front side color (cornflower blue) */
+}
+
+input:checked + .slider.orange {
+    background-color: #FF8C00; /* Back side color (dark orange) */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #3cb371;
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 /* Hover style already defined above */
 
 .arrow {
