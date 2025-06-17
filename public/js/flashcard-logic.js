@@ -82,6 +82,8 @@ function updateStats() {
         verbs: improvedFlashcards.filter(c => c.partOfSpeech && c.partOfSpeech.toLowerCase().includes('verb')).length,
         nouns: improvedFlashcards.filter(c => c.partOfSpeech && c.partOfSpeech.toLowerCase().includes('noun')).length,
         prepositions: improvedFlashcards.filter(c => c.partOfSpeech && c.partOfSpeech.toLowerCase().includes('preposition')).length,
+        cognates: improvedFlashcards.filter(c => c.tags && c.tags.includes('#cognate')).length,
+        falseCognates: improvedFlashcards.filter(c => c.tags && c.tags.includes('#false_cognate')).length,
         questions: improvedFlashcards.filter(c => {
             // Check if it's a question in the Portuguese text or tagged as question
             return (c.portuguese && c.portuguese.includes('?')) || 
@@ -107,6 +109,8 @@ function updateStats() {
     document.getElementById('prepCards').textContent = stats.prepositions;
     document.getElementById('questionCards').textContent = stats.questions;
     document.getElementById('phraseCards').textContent = stats.phrases;
+    document.getElementById('cognateCards').textContent = stats.cognates;
+    document.getElementById('falseCognateCards').textContent = stats.falseCognates;
 }
 
 function showAllCards() {

@@ -73,6 +73,14 @@
                     <div class="stat-number" id="phraseCards">0</div>
                     <div class="stat-label">Phrases</div>
                 </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="cognateCards">0</div>
+                    <div class="stat-label">Cognates</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="falseCognateCards">0</div>
+                    <div class="stat-label">False Cognates</div>
+                </div>
             </div>
         </div>
     </div>
@@ -92,6 +100,11 @@
         <button class="filter-button" onclick="filterCards('beginner')">Beginner</button>
         <button class="filter-button" onclick="filterCards('intermediate')">Intermediate</button>
         <button class="filter-button" onclick="filterCards('advanced')">Advanced</button>
+    </div>
+
+    <div class="filter-controls">
+        <button class="filter-button" onclick="filterCards('cognate')">Cognates</button>
+        <button class="filter-button" onclick="filterCards('false_cognate')">False Cognates</button>
     </div>
     
     <div class="filter-status">
