@@ -140,13 +140,19 @@
                 <button class="search-btn" onclick="searchVerb()">Search</button>
             </div>
             
-            <div class="verb-suggestions">
-                <button class="verb-suggestion" onclick="selectVerb('ir')">ir (to go)</button>
-                <button class="verb-suggestion" onclick="selectVerb('ser')">ser (to be)</button>
-                <button class="verb-suggestion" onclick="selectVerb('estar')">estar (to be)</button>
-                <button class="verb-suggestion" onclick="selectVerb('ter')">ter (to have)</button>
-                <button class="verb-suggestion" onclick="selectVerb('fazer')">fazer (to do)</button>
-                <button class="verb-suggestion" onclick="selectVerb('falar')">falar (to speak)</button>
+            <div class="verb-suggestions-container">
+                <div class="verb-suggestions expanded" id="verbSuggestions">
+                    <button class="verb-suggestion" onclick="selectVerb('ir')">ir (to go)</button>
+                    <button class="verb-suggestion" onclick="selectVerb('ser')">ser (to be)</button>
+                    <button class="verb-suggestion" onclick="selectVerb('estar')">estar (to be)</button>
+                    <button class="verb-suggestion" onclick="selectVerb('ter')">ter (to have)</button>
+                    <button class="verb-suggestion" onclick="selectVerb('fazer')">fazer (to do)</button>
+                    <button class="verb-suggestion" onclick="selectVerb('falar')">falar (to speak)</button>
+                </div>
+                <button class="show-all-verbs-btn" onclick="toggleAllVerbs()">
+                    <span id="showAllText">Show All Verbs</span>
+                    <span class="toggle-arrow">▼</span>
+                </button>
             </div>
         </div>
 

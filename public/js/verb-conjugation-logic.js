@@ -233,8 +233,48 @@ function initializeLanguageToggle() {
     }
 }
 
-// Update verb suggestions based on current language mode
-function updateVerbSuggestions() {
+let showingAllVerbs = false;
+
+// Toggle between popular verbs and all verbs
+function toggleAllVerbs() {
+    const btn = document.querySelector('.show-all-verbs-btn');
+    const textSpan = document.getElementById('showAllText');
+    
+    showingAllVerbs = !showingAllVerbs;
+    
+    if (showingAllVerbs) {
+        btn.classList.add('expanded');
+        textSpan.textContent = 'Show Popular Verbs';
+        showAllVerbs();
+    } else {
+        btn.classList.remove('expanded');
+        textSpan.textContent = 'Show All Verbs';
+        showPopularVerbs();
+    }
+}
+
+// Show all available verbs
+function showAllVerbs() {
+    const suggestionsContainer = document.querySelector('.verb-suggestions');
+    if (!suggestionsContainer) return;
+    
+    if (isEnglishVerbMode) {
+        // Generate buttons for all English verbs
+        const allButtons = englishVerbConjugations.map(verb => 
+            `<button class="verb-suggestion" onclick="selectVerb('${verb.infinitive}')">${verb.infinitive} (${verb.portuguese})</button>`
+        ).join('');
+        suggestionsContainer.innerHTML = allButtons;
+    } else {
+        // Generate buttons for all Portuguese verbs
+        const allButtons = verbConjugations.map(verb => 
+            `<button class="verb-suggestion" onclick="selectVerb('${verb.infinitive}')">${verb.infinitive} (${verb.english})</button>`
+        ).join('');
+        suggestionsContainer.innerHTML = allButtons;
+    }
+}
+
+// Show popular verbs only
+function showPopularVerbs() {
     const suggestionsContainer = document.querySelector('.verb-suggestions');
     if (!suggestionsContainer) return;
     
@@ -256,6 +296,15 @@ function updateVerbSuggestions() {
             <button class="verb-suggestion" onclick="selectVerb('fazer')">fazer (to do)</button>
             <button class="verb-suggestion" onclick="selectVerb('falar')">falar (to speak)</button>
         `;
+    }
+}
+
+// Update verb suggestions based on current language mode
+function updateVerbSuggestions() {
+    if (showingAllVerbs) {
+        showAllVerbs();
+    } else {
+        showPopularVerbs();
     }
 }
 
