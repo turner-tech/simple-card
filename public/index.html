@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/flashcard-study.css">
+    <link rel="stylesheet" href="css/verb-conjugations.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -21,6 +22,7 @@
         <button class="button" onclick="downloadAnkiCSV()">📚 Download Anki CSV</button>
         <button class="button" onclick="showAllCards()">👁️ Show All Cards</button>
         <button class="button" onclick="hideCards()">🙈 Hide Cards</button>
+        <button class="button" onclick="showVerbConjugations()">🔄 Verb Conjugations</button>
     </div>
 
     <div class="stats" id="stats">
@@ -111,7 +113,46 @@
         <span id="filter-counter">Showing all cards</span>
     </div>
 
-    <div class="card-grid"></div>
+    <!-- Main Flashcard View -->
+    <div id="flashcard-view" class="flashcard-view">
+        <div class="card-grid"></div>
+    </div>
+
+    <!-- Verb Conjugations View -->
+    <div id="conjugation-view" class="conjugation-view">
+        <button class="back-to-flashcards" onclick="showFlashcards()">← Back to Flashcards</button>
+        
+        <div class="verb-search-container">
+            <h2>🔄 Verb Conjugations</h2>
+            
+            <div class="language-toggle-container">
+                <div class="toggle-group">
+                    <span class="mode-label">🇧🇷 Portuguese / 🇺🇸 English</span>
+                    <label class="switch">
+                        <input type="checkbox" id="verbLanguageToggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="search-input-group">
+                <input type="text" id="verbSearch" class="search-input" placeholder="Search for a verb (e.g., 'ir', 'to go', 'ser', 'be')">
+                <button class="search-btn" onclick="searchVerb()">Search</button>
+            </div>
+            
+            <div class="verb-suggestions">
+                <button class="verb-suggestion" onclick="selectVerb('ir')">ir (to go)</button>
+                <button class="verb-suggestion" onclick="selectVerb('ser')">ser (to be)</button>
+                <button class="verb-suggestion" onclick="selectVerb('estar')">estar (to be)</button>
+                <button class="verb-suggestion" onclick="selectVerb('ter')">ter (to have)</button>
+                <button class="verb-suggestion" onclick="selectVerb('fazer')">fazer (to do)</button>
+                <button class="verb-suggestion" onclick="selectVerb('falar')">falar (to speak)</button>
+            </div>
+        </div>
+
+        <div id="conjugation-results"></div>
+    </div>
+
 
     <!-- Flashcard Study Mode Modal -->
     <div id="studyModeModal" class="modal">
@@ -167,7 +208,10 @@
     </div>
     <!-- Scripts -->
     <script src="js/flashcard-data.js"></script>
+    <script src="js/verb-conjugations.js"></script>
+    <script src="js/english-verb-conjugations.js"></script>
     <script src="js/flashcard-logic.js"></script>
+    <script src="js/verb-conjugation-logic.js"></script>
     <script src="js/touch-gestures.js"></script>
     <script src="js/theme-switcher.js"></script>
 </body>
