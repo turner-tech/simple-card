@@ -385,8 +385,13 @@ function displayNoResults(message) {
     `;
 }
 
-// Show flashcards view (hide conjugation views)
+// Legacy function - now handled by router
 function showFlashcards() {
-    document.getElementById('flashcard-view').style.display = 'block';
-    document.getElementById('conjugation-view').style.display = 'none';
+    if (typeof router !== 'undefined') {
+        router.navigate('/');
+    } else {
+        // Fallback for direct calls
+        document.getElementById('flashcard-view').style.display = 'block';
+        document.getElementById('conjugation-view').style.display = 'none';
+    }
 }

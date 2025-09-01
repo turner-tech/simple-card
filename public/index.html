@@ -12,105 +12,123 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
-    <div class="header">
-        <h1>🇧🇷 Portuguese Flashcards</h1>
+    <!-- Main Navigation -->
+    <nav id="main-nav" class="main-navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>🇧🇷 Lingua Card</h1>
+            </div>
+            <div class="nav-items">
+                <button class="nav-item active" data-nav="flashcards" onclick="navigateToFlashcards()">
+                    📚 Flashcards
+                </button>
+                <button class="nav-item" data-nav="verbs" onclick="navigateToVerbs()">
+                    🔄 Verb Conjugations
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flashcards Page Header -->
+    <div class="page-header" id="flashcards-header">
+        <h2>Portuguese Flashcards</h2>
         <p>Enhanced vocabulary deck with examples, grammar info, and Anki-ready format</p>
     </div>
 
-    <div class="controls">
+    <!-- Flashcards Controls -->
+    <div class="controls" id="flashcards-controls">
         <button class="button" id="downloadBtn" onclick="downloadExcel()">📥 Download Excel File</button>
         <button class="button" onclick="downloadAnkiCSV()">📚 Download Anki CSV</button>
         <button class="button" onclick="showAllCards()">👁️ Show All Cards</button>
         <button class="button" onclick="hideCards()">🙈 Hide Cards</button>
-        <button class="button" onclick="showVerbConjugations()">🔄 Verb Conjugations</button>
-    </div>
-
-    <div class="stats" id="stats">
-        <h3>📊 Deck Statistics</h3>
-        <div class="stats-section">
-            <h4>Difficulty Levels</h4>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalCards">0</div>
-                    <div class="stat-label">Total Cards</div>
+        
+        <div class="stats" id="stats">
+            <h3>📊 Deck Statistics</h3>
+            <div class="stats-section">
+                <h4>Difficulty Levels</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalCards">0</div>
+                        <div class="stat-label">Total Cards</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="beginnerCards">0</div>
+                        <div class="stat-label">Beginner</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="intermediateCards">0</div>
+                        <div class="stat-label">Intermediate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="advancedCards">0</div>
+                        <div class="stat-label">Advanced</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="withExamples">0</div>
+                        <div class="stat-label">With Examples</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="beginnerCards">0</div>
-                    <div class="stat-label">Beginner</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="intermediateCards">0</div>
-                    <div class="stat-label">Intermediate</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="advancedCards">0</div>
-                    <div class="stat-label">Advanced</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="withExamples">0</div>
-                    <div class="stat-label">With Examples</div>
+            </div>
+            <div class="stats-section">
+                <h4>Word Types</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="verbCards">0</div>
+                        <div class="stat-label">Verbs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="nounCards">0</div>
+                        <div class="stat-label">Nouns</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="prepCards">0</div>
+                        <div class="stat-label">Prepositions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="questionCards">0</div>
+                        <div class="stat-label">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="phraseCards">0</div>
+                        <div class="stat-label">Phrases</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="cognateCards">0</div>
+                        <div class="stat-label">Cognates</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="falseCognateCards">0</div>
+                        <div class="stat-label">False Cognates</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="stats-section">
-            <h4>Word Types</h4>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" id="verbCards">0</div>
-                    <div class="stat-label">Verbs</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="nounCards">0</div>
-                    <div class="stat-label">Nouns</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="prepCards">0</div>
-                    <div class="stat-label">Prepositions</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="questionCards">0</div>
-                    <div class="stat-label">Questions</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="phraseCards">0</div>
-                    <div class="stat-label">Phrases</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="cognateCards">0</div>
-                    <div class="stat-label">Cognates</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="falseCognateCards">0</div>
-                    <div class="stat-label">False Cognates</div>
-                </div>
-            </div>
+
+        <div class="filter-controls">
+            <button class="filter-button active" onclick="filterCards('all')">All</button>
+            <button class="filter-button" onclick="filterCards('verb')">Verbs</button>
+            <button class="filter-button" onclick="filterCards('noun')">Nouns</button>
+            <button class="filter-button" onclick="filterCards('preposition')">Prepositions</button>
+            <button class="filter-button" onclick="filterCards('number')">Numbers</button>
+            <button class="filter-button" onclick="filterCards('month')">Months</button>
+            <button class="filter-button" onclick="filterCards('question')">Questions</button>
+            <button class="filter-button" onclick="filterCards('phrase')">Phrases</button>
         </div>
-    </div>
 
-    <div class="filter-controls">
-        <button class="filter-button active" onclick="filterCards('all')">All</button>
-        <button class="filter-button" onclick="filterCards('verb')">Verbs</button>
-        <button class="filter-button" onclick="filterCards('noun')">Nouns</button>
-        <button class="filter-button" onclick="filterCards('preposition')">Prepositions</button>
-        <button class="filter-button" onclick="filterCards('number')">Numbers</button>
-        <button class="filter-button" onclick="filterCards('month')">Months</button>
-        <button class="filter-button" onclick="filterCards('question')">Questions</button>
-        <button class="filter-button" onclick="filterCards('phrase')">Phrases</button>
-    </div>
+        <div class="filter-controls">
+            <button class="filter-button" onclick="filterCards('beginner')">Beginner</button>
+            <button class="filter-button" onclick="filterCards('intermediate')">Intermediate</button>
+            <button class="filter-button" onclick="filterCards('advanced')">Advanced</button>
+        </div>
 
-    <div class="filter-controls">
-        <button class="filter-button" onclick="filterCards('beginner')">Beginner</button>
-        <button class="filter-button" onclick="filterCards('intermediate')">Intermediate</button>
-        <button class="filter-button" onclick="filterCards('advanced')">Advanced</button>
-    </div>
-
-    <div class="filter-controls">
-        <button class="filter-button" onclick="filterCards('cognate')">Cognates</button>
-        <button class="filter-button" onclick="filterCards('false_cognate')">False Cognates</button>
-    </div>
-    
-    <div class="filter-status">
-        <span id="filter-counter">Showing all cards</span>
+        <div class="filter-controls">
+            <button class="filter-button" onclick="filterCards('cognate')">Cognates</button>
+            <button class="filter-button" onclick="filterCards('false_cognate')">False Cognates</button>
+        </div>
+        
+        <div class="filter-status">
+            <span id="filter-counter">Showing all cards</span>
+        </div>
     </div>
 
     <!-- Main Flashcard View -->
@@ -120,10 +138,13 @@
 
     <!-- Verb Conjugations View -->
     <div id="conjugation-view" class="conjugation-view">
-        <button class="back-to-flashcards" onclick="showFlashcards()">← Back to Flashcards</button>
+        <!-- Verbs Page Header -->
+        <div class="page-header" id="verbs-header">
+            <h2>🔄 Verb Conjugations</h2>
+            <p>Learn Portuguese and English verb conjugations with examples</p>
+        </div>
         
         <div class="verb-search-container">
-            <h2>🔄 Verb Conjugations</h2>
             
             <div class="language-toggle-container">
                 <div class="toggle-group">
@@ -220,5 +241,6 @@
     <script src="js/verb-conjugation-logic.js"></script>
     <script src="js/touch-gestures.js"></script>
     <script src="js/theme-switcher.js"></script>
+    <script src="js/router.js"></script>
 </body>
 </html>
